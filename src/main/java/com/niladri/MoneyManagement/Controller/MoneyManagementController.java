@@ -22,7 +22,7 @@ public class MoneyManagementController {
     private final Spend_Service spend_service;
     private final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.ENGLISH);
 
-    private final String corsOrigin = "http://127.0.0.1:5500/";
+    private final String corsOrigin = "https://scavenop.github.io";
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
