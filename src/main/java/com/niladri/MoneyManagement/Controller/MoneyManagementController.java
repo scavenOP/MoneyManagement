@@ -34,7 +34,7 @@ public class MoneyManagementController {
         return spend_service.GetAllSpendTransactions();
     }
 
-    @GetMapping("{category}")
+    @GetMapping("/{category}")
     @ResponseStatus(HttpStatus.OK)
     public List<Spend_Transaction> GetAllSpendTransactionByCategory(@PathVariable String category){
         return spend_service.GetAllSpendTransactionByCategory(category);
