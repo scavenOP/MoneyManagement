@@ -16,8 +16,9 @@ import java.util.Date;
 @Document(collection = "spend_transaction")
 public class Spend_Transaction {
     @Id
-    public String Id;
+    public String id;
     public Date date;
+    public String category;
     public String description;
-    public Integer Amount;
+    public Double amount;
 }

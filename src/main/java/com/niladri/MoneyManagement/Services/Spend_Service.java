@@ -26,7 +26,7 @@ public class Spend_Service {
             Spend_Transaction spend_transaction = Spend_Transaction.builder()
                     .date(spend_transaction_dto.getDate())
                     .description(spend_transaction_dto.getDescription())
-                    .Amount(spend_transaction_dto.getAmount())
+                    .amount(spend_transaction_dto.getAmount())
                     .build();
 
             spend_repository.save(spend_transaction);
