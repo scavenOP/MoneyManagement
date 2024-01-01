@@ -22,25 +22,31 @@ public class MoneyManagementController {
     private final Spend_Service spend_service;
     private final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.ENGLISH);
 
+    private final String corsOrigin = "http://127.0.0.1:5500/";
+
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
+    @CrossOrigin(origins = corsOrigin)
     public void AddSpendTransaction(@RequestBody Spend_Transaction_DTO spend_transaction_dto){
         spend_service.AddSpendTransaction(spend_transaction_dto);
     }
 
     @GetMapping()
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = corsOrigin)
     public List<Spend_Transaction> GetAllSpendTransactions(){
         return spend_service.GetAllSpendTransactions();
     }
 
     @GetMapping("/category/{category}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = corsOrigin)
     public List<Spend_Transaction> GetAllSpendTransactionByCategory(@PathVariable String category){
         return spend_service.GetAllSpendTransactionByCategory(category);
     }
     @GetMapping("dates/{startDate}/{endDate}")
     @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = corsOrigin)
     public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(@PathVariable String startDate, @PathVariable String endDate){
         try {
             return spend_service.GetAllSpendTransactionBetweenDates(format.parse(startDate), format.parse(endDate));
