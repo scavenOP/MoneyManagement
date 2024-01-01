@@ -6,8 +6,11 @@ import com.niladri.MoneyManagement.Repository.Spend_Repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -37,5 +40,16 @@ public class Spend_Service {
             return spend_repository.findAll();
 
     }
+    public List<Spend_Transaction> GetAllSpendTransactionByCategory(String category){
 
+        Query query = new Query();
+        query.addCriteria(Criteria.where("category").is(category));
+        return mongoTemplate.find(query, Spend_Transaction.class);
+    }
+    public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(Date startDate, Date endDate){
+
+        Query query = new Query();
+        query.addCriteria(Criteria.where("date").gte(startDate).lte(endDate));
+        return mongoTemplate.find(query, Spend_Transaction.class);
+    }
 }
