@@ -39,7 +39,6 @@ public class MoneyManagementController {
     public List<Spend_Transaction> GetAllSpendTransactionByCategory(@PathVariable String category){
         return spend_service.GetAllSpendTransactionByCategory(category);
     }
-
     @GetMapping("{startDate}/{endDate}")
     @ResponseStatus(HttpStatus.OK)
     public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(@PathVariable String startDate, @PathVariable String endDate){
