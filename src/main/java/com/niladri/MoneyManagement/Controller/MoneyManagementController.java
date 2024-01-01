@@ -22,11 +22,11 @@ public class MoneyManagementController {
     private final Spend_Service spend_service;
     private final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.ENGLISH);
 
-    private final String corsOrigin = "https://scavenop.github.io";
+    private final String corsOrigin = "*";
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    @CrossOrigin(origins = corsOrigin)
+    @CrossOrigin()
     public void AddSpendTransaction(@RequestBody Spend_Transaction_DTO spend_transaction_dto){
         spend_service.AddSpendTransaction(spend_transaction_dto);
     }
