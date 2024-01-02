@@ -15,7 +15,6 @@ import java.util.List;
 import java.util.Locale;
 
 @RestController
-@RequestMapping("/api/MoneyManagement")
 @RequiredArgsConstructor
 public class MoneyManagementController {
 
@@ -24,32 +23,33 @@ public class MoneyManagementController {
 
     private final String corsOrigin = "*";
 
-    @PostMapping()
+    @PostMapping("/api/MoneyManagement")
     @ResponseStatus(HttpStatus.CREATED)
     @CrossOrigin()
     public void AddSpendTransaction(@RequestBody Spend_Transaction_DTO spend_transaction_dto){
         spend_service.AddSpendTransaction(spend_transaction_dto);
     }
 
-    @GetMapping()
+    @GetMapping("/api/MoneyManagement/{user}")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = corsOrigin)
-    public List<Spend_Transaction> GetAllSpendTransactions(){
-        return spend_service.GetAllSpendTransactions();
+    public List<Spend_Transaction> GetAllSpendTransactions(@PathVariable String user){
+
+        return spend_service.GetAllSpendTransactions(user);
     }
 
-    @GetMapping("/category/{category}")
+    @GetMapping("category/{user}/{category}")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = corsOrigin)
-    public List<Spend_Transaction> GetAllSpendTransactionByCategory(@PathVariable String category){
-        return spend_service.GetAllSpendTransactionByCategory(category);
+    public List<Spend_Transaction> GetAllSpendTransactionByCategory(@PathVariable String user, @PathVariable String category){
+        return spend_service.GetAllSpendTransactionByCategory(user,category);
     }
-    @GetMapping("dates/{startDate}/{endDate}")
+    @GetMapping("dates/{user}/{startDate}/{endDate}")
     @ResponseStatus(HttpStatus.OK)
     @CrossOrigin(origins = corsOrigin)
-    public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(@PathVariable String startDate, @PathVariable String endDate){
+    public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(@PathVariable String user,@PathVariable String startDate, @PathVariable String endDate){
         try {
-            return spend_service.GetAllSpendTransactionBetweenDates(format.parse(startDate), format.parse(endDate));
+            return spend_service.GetAllSpendTransactionBetweenDates(user,format.parse(startDate), format.parse(endDate));
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }

@@ -28,6 +28,7 @@ public class Spend_Service {
                     .description(spend_transaction_dto.getDescription())
                     .amount(spend_transaction_dto.getAmount())
                     .category(spend_transaction_dto.getCategory())
+                    .user(spend_transaction_dto.getUser())
                     .build();
 
             spend_repository.save(spend_transaction);
@@ -37,20 +38,23 @@ public class Spend_Service {
         }
     }
 
-    public List<Spend_Transaction>GetAllSpendTransactions(){
-            return spend_repository.findAll();
+    public List<Spend_Transaction>GetAllSpendTransactions(String user){
+        Query query = new Query();
+        query.addCriteria(Criteria.where("user").is(user));
+        return mongoTemplate.find(query, Spend_Transaction.class);
 
     }
-    public List<Spend_Transaction> GetAllSpendTransactionByCategory(String category){
+    public List<Spend_Transaction> GetAllSpendTransactionByCategory(String user,String category){
 
         Query query = new Query();
+        query.addCriteria(Criteria.where("user").is(user));
         query.addCriteria(Criteria.where("category").is(category));
         return mongoTemplate.find(query, Spend_Transaction.class);
     }
-    public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(Date startDate, Date endDate){
+    public List<Spend_Transaction> GetAllSpendTransactionBetweenDates(String user,Date startDate, Date endDate){
 
         Query query = new Query();
-        query.addCriteria(Criteria.where("date").gte(startDate).lte(endDate));
+        query.addCriteria(Criteria.where("user").is(user).and("date").gte(startDate).lte(endDate));
         return mongoTemplate.find(query, Spend_Transaction.class);
     }
 }
