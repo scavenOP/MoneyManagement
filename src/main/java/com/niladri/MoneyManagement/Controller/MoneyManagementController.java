@@ -2,6 +2,7 @@ package com.niladri.MoneyManagement.Controller;
 
 import com.niladri.MoneyManagement.DTO.Spend_Transaction_DTO;
 import com.niladri.MoneyManagement.Models.Spend_Transaction;
+import com.niladri.MoneyManagement.Services.Expense_Service;
 import com.niladri.MoneyManagement.Services.Spend_Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,7 @@ import java.util.Locale;
 public class MoneyManagementController {
 
     private final Spend_Service spend_service;
+    private final Expense_Service expense_service;
     private final DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.ENGLISH);
 
     private final String corsOrigin = "*";
@@ -53,5 +55,19 @@ public class MoneyManagementController {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @GetMapping("currentMonthExpense/{user}")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = corsOrigin)
+    public String GetCurrentMonthExpense(@PathVariable String user){
+        return expense_service.GetCurrentMonthExpense(user);
+    }
+
+    @GetMapping("currentYearExpense/{user}")
+    @ResponseStatus(HttpStatus.OK)
+    @CrossOrigin(origins = corsOrigin)
+    public String GetCurrentYearExpense(@PathVariable String user){
+        return expense_service.GetCurrentYearExpense(user);
     }
 }

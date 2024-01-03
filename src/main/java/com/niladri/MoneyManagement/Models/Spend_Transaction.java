@@ -20,6 +20,6 @@ public class Spend_Transaction {
     public Date date;
     public String category;
     public String description;
-    public Double amount;
+    public Integer amount;
     public String user;
 }

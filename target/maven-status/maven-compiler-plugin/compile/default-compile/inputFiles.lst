@@ -1,6 +1,13 @@
-E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Controller\MoneyManagementController.java
 E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Models\Spend_Transaction.java
-E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Repository\Spend_Repository.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Repository\User_Repository.java
 E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Services\Spend_Service.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\DTO\Login_DTO.java
 E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\DTO\Spend_Transaction_DTO.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Models\User.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Services\User_Service.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Controller\MoneyManagementController.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Controller\AuthController.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\DTO\SignUp_DTO.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Repository\Spend_Repository.java
 E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\MoneyManagementApplication.java
+E:\projects\Salt clone\MoneyManagement\src\main\java\com\niladri\MoneyManagement\Services\Expense_Service.java

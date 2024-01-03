@@ -16,5 +16,5 @@ public class Spend_Transaction_DTO {
     public Date date;
     public String category;
     public String description;
-    public Double amount;
+    public Integer amount;
 }
