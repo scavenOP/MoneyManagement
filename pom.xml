@@ -82,6 +82,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>money-management</finalName>
 	</build>
 
 </project>
