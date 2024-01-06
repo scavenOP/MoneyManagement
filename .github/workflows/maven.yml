@@ -6,7 +6,7 @@ manage# This workflow will build a Java project with Maven, and cache/restore an
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: money-management
+name: Java CI with Maven
 
 on:
   push:
