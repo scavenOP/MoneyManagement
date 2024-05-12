@@ -6,6 +6,7 @@ import { ExpenseData } from 'src/app/expense-data';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ChartDetail } from 'src/app/chartdetail';
+import { Router } from '@angular/router';
 
 
 interface Expense {
@@ -27,7 +28,7 @@ interface TotalBudget {
 })
 export class DashboardComponent implements OnInit{
 
-  constructor(private elementRef: ElementRef,private expensedata : ExpenseData,private http: HttpClient,private chartdetail:ChartDetail) {
+  constructor(private elementRef: ElementRef,private expensedata : ExpenseData,private http: HttpClient,private chartdetail:ChartDetail,private router: Router) {
     Chart.register(ChartDataLabels);
   }
   
@@ -39,8 +40,9 @@ export class DashboardComponent implements OnInit{
 
   monthly_expenses :[{name:"string",amount:2000}];
   early_expense :[{name:"string",amount:2000}] ;
-
-  totalBudget = [2500,30000];
+  monthlyBudget:number;
+  yearlyBudget:number;
+  totalBudget : [number,number];
   timePeriod = 0;
 
   
@@ -48,6 +50,19 @@ export class DashboardComponent implements OnInit{
 
 
   ngOnInit(){
+
+    if(localStorage.getItem('username')==null){
+      // Redirect to the root URL
+  this.router.navigate(['/']);
+  }
+
+
+  if(localStorage.getItem("monthlyBudget")!=null){
+    this.monthlyBudget = parseInt(localStorage.getItem("monthlyBudget")!);
+    this.yearlyBudget = parseInt(localStorage.getItem("yearlyBudget")!);
+    this.totalBudget = [this.monthlyBudget,this.yearlyBudget];
+  }
+  
 
     
 
