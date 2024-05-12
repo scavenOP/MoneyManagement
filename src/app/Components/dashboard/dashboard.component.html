@@ -1,0 +1,43 @@
+<div class="dashboard-container">
+  <div class="loader-overlay" *ngIf="isLoading">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+  <h1 class="dashboard-heading">Dashboard</h1>
+
+  <div class="d-flex justify-content-center align-items-center my-4">
+    <div class="btn-group btn-group-toggle" data-toggle="input">
+      <label class="btn btn-primary bt" [class.active]="timePeriod == 0">
+        <input
+          type="radio"
+          name="time-period"
+          value="0"
+          [(ngModel)]="timePeriod"
+          (ngModelChange)="onTimePeriodChange()"
+        />
+        Monthly
+      </label>
+      <label class="btn btn-primary bt" [class.active]="timePeriod == 1">
+        <input
+          type="radio"
+          name="time-period"
+          value="1"
+          [(ngModel)]="timePeriod"
+          (ngModelChange)="onTimePeriodChange()"
+        />
+        Yearly
+      </label>
+    </div>
+  </div>
+
+  <div
+    class="d-flex justify-content-center align-items-center"
+    style="height: 100vh; width: 100vw"
+  >
+    <div class="canvas-container">
+      <canvas id="pichart"></canvas>
+      <canvas id="barchart"></canvas>
+    </div>
+  </div>
+</div>

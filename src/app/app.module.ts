@@ -7,20 +7,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Components/navbar/navbar.component';
 import { AddTxnComponent } from './Components/add-txn/add-txn.component';
-
+import { FormsModule } from '@angular/forms';
 import { CorsInterceptor } from './cors.intercepter';
+import { HomeComponent } from './Components/home/home.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { AllTransactionComponent } from './all-transaction/all-transaction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AddTxnComponent
+    AddTxnComponent,
+    HomeComponent,
+    DashboardComponent,
+    AllTransactionComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass:CorsInterceptor,multi:true}],
